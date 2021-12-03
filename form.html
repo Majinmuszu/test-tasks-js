@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <form id="books-form">
+      <label
+        >Tytuł książki<input
+          class="book-details"
+          id="title"
+          type="text"
+          minlength="1"
+          name="book-title"
+          required
+      /></label>
+      <label
+        >Autor książki<input
+          class="book-details"
+          id="author"
+          type="text"
+          minlength="3"
+          name="book-author"
+          required
+      /></label>
+      <label
+        >Priorytet przeczytania<input
+          class="book-details"
+          id="priority"
+          type="range"
+          name="book-priority"
+          value="1"
+          min="1"
+          max="5"
+          step="1"
+      /></label>
+      <label for="category">Kategoria książki</label>
+      <select class="book-details" id="category" name="book-category">
+        <option value="Fabularna" selected>Fabularna</option>
+        <option value="Naukowa">Naukowa</option>
+        <option value="Historyczna">Historyczna</option>
+      </select>
+      <button id="submit-book" type="submit">Dodaj książkę</button>
+    </form>
+    <div class="books-wrapper">
+      <ul class="books-list"></ul>
+    </div>
+    <script src="./form.js"></script>
+  </body>
+</html>
