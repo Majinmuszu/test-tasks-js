@@ -1,7 +1,7 @@
 const qs = (sel) => document.querySelector(sel);
 const log = (any) => console.log(any);
 
-const button = qs(".browser-button");
+const button = qs(".draw-num-button");
 const evenColumn = qs(".even");
 const oddColumn = qs(".odd");
 let evenNumbers = [];

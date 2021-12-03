@@ -1,6 +1,3 @@
-#browser {
-  display: flex;
-}
 ul {
   list-style: none;
   padding: 0;
@@ -10,7 +7,11 @@ body {
   height: 100%;
   margin: 0;
 }
-.browser-button {
+.column-wrapper {
+  display: flex;
+}
+
+.draw-num-button {
   width: 220px;
   height: 50px;
   font-size: 20px;
