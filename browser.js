@@ -11,24 +11,20 @@ let randomNumbers = [];
 const renderNumbers = () => {
   evenColumn.innerHTML = "";
   oddColumn.innerHTML = "";
-  evenNumbers.forEach((num) => {
-    evenColumn.innerHTML = evenColumn.innerHTML + `<li>${num}</li>`;
-  });
-  oddNumbers.forEach((num) => {
-    oddColumn.innerHTML = oddColumn.innerHTML + `<li>${num}</li>`;
-  });
+  evenColumn.innerHTML = evenNumbers.map((num) => `<li>${num}</li>`).join("");
+  oddColumn.innerHTML = oddNumbers.map((num) => `<li>${num}</li>`).join("");
 };
 
 const sortNumbers = () => {
-  randomNumbers.forEach((num) => {
-    if (num % 2 === 0) {
-      evenNumbers.push(num);
-    } else {
-      oddNumbers.push(num);
-    }
-  });
-  evenNumbers.sort((a, b) => a - b);
-  oddNumbers.sort((a, b) => a - b);
+  randomNumbers
+    .sort((a, b) => a - b)
+    .forEach((num) => {
+      if (num % 2 === 0) {
+        evenNumbers.push(num);
+      } else {
+        oddNumbers.push(num);
+      }
+    });
   renderNumbers();
 };
 
