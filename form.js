@@ -27,16 +27,21 @@ const BOOKS_KEY = "BOOKS_LIST";
 
 let books = load(BOOKS_KEY) === undefined ? [] : load(BOOKS_KEY);
 let currentBookId = books.length > 0 ? books[books.length - 1].id : null;
+
+//   Adding books to table
+
 const renderBooks = () => {
   booksTable.innerHTML = "";
   books.forEach(({ id, title, author, priority, category }) => {
     booksTable.innerHTML += `
     <tr class="table-row ${id}">
-            <td class="table-draw">${title}</td>
-            <td class="table-draw">${author}</td>
-            <td class="table-draw">${priority}</td>
-            <td class="table-draw">${category}</td>
-            <td class="table-draw"><button id="${id}" class="delete-button">USUŃ WPIS</button></td>
+      <td class="table-draw">${title}</td>
+      <td class="table-draw">${author}</td>
+      <td class="table-draw">${priority}</td>
+      <td class="table-draw">${category}</td>
+      <td class="table-draw">
+        <button id="${id}" class="delete-button">USUŃ WPIS</button>
+      </td>
     </tr>
     `;
   });
@@ -63,6 +68,8 @@ booksForm.onsubmit = (e) => {
 };
 renderBooks();
 
+//Removing books from table
+
 const removeBookFromList = (e) => {
   e.preventDefault();
   if (e.target.nodeName !== "BUTTON") {
@@ -74,9 +81,10 @@ const removeBookFromList = (e) => {
     books = newBooks;
   }
 };
-const updatePriorityValue = (e) => {
-  log("dupa");
+
+const updatePriorityValue = () => {
   priorityValue.innerHTML = `${priorityInput.value}`;
 };
+
 booksTable.addEventListener("click", removeBookFromList);
 priorityInput.addEventListener("input", updatePriorityValue);
