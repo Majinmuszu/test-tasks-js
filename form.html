@@ -7,48 +7,69 @@
     <title>Document</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
-  <body>
-    <form id="books-form">
-      <label
-        >Tytuł książki<input
-          class="book-details"
-          id="title"
-          type="text"
-          minlength="1"
-          name="book-title"
+  <body id="table-body">
+    <div class="form-wrapper">
+      <form id="books-form">
+        <label
+          >Tytuł książki<input
+            class="book-details"
+            id="title"
+            type="text"
+            minlength="1"
+            name="book-title"
+            placeholder="Wpisz tytuł (min 1 znak)"
+            required
+        /></label>
+        <label
+          >Autor książki<input
+            class="book-details"
+            id="author"
+            type="text"
+            minlength="3"
+            name="book-author"
+            placeholder="Wpisz autora (min 3 znaki)"
+            required
+        /></label>
+        <label
+          >Priorytet przeczytania<input
+            class="book-details"
+            id="priority"
+            type="range"
+            name="book-priority"
+            value="1"
+            min="1"
+            max="5"
+            step="1"
+          /><span class="priority-value">1</span></label
+        >
+        <label for="category">Kategoria książki</label>
+        <select
           required
-      /></label>
-      <label
-        >Autor książki<input
           class="book-details"
-          id="author"
-          type="text"
-          minlength="3"
-          name="book-author"
-          required
-      /></label>
-      <label
-        >Priorytet przeczytania<input
-          class="book-details"
-          id="priority"
-          type="range"
-          name="book-priority"
-          value="1"
-          min="1"
-          max="5"
-          step="1"
-      /></label>
-      <label for="category">Kategoria książki</label>
-      <select class="book-details" id="category" name="book-category">
-        <option value="Fabularna" selected>Fabularna</option>
-        <option value="Naukowa">Naukowa</option>
-        <option value="Historyczna">Historyczna</option>
-      </select>
-      <button id="submit-book" type="submit">Dodaj książkę</button>
-    </form>
-    <div class="books-wrapper">
-      <ul class="books-list"></ul>
+          id="category"
+          name="book-category"
+        >
+          <option value="Fabularna">Fabularna</option>
+          <option value="Naukowa">Naukowa</option>
+          <option value="Historyczna">Historyczna</option>
+        </select>
+        <button id="submit-book" type="submit">Dodaj książkę</button>
+      </form>
+      <div class="books-wrapper">
+        <table class="table">
+          <thead class="table-head">
+            <tr>
+              <th>Tytuł</th>
+              <th>Autor</th>
+              <th>Priorytet</th>
+              <th>Kategoria</th>
+              <th>Usuń z listy</th>
+            </tr>
+          </thead>
+          <tbody class="table-body"></tbody>
+        </table>
+      </div>
+      <script src="./form.js"></script>
     </div>
-    <script src="./form.js"></script>
   </body>
 </html>

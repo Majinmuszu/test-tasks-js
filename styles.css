@@ -1,3 +1,4 @@
+/* GLOBAL STYLES */
 ul {
   list-style: none;
   padding: 0;
@@ -7,10 +8,12 @@ body {
   height: 100%;
   margin: 0;
 }
+
+/* RANDOM NUMBERS GENERATOR STYLES */
+
 .column-wrapper {
   display: flex;
 }
-
 .draw-num-button {
   width: 220px;
   height: 50px;
@@ -35,9 +38,79 @@ body {
   margin-left: 20px;
 }
 
+/* FULLSCREEN PHOTO STYLES */
+
 .fullscreen-photo {
   width: 100%;
   height: 100%;
   display: block;
   object-fit: cover;
+}
+
+/* BOOKS TABLE STYLES  */
+#table-body {
+  background-color: rgb(216, 216, 216);
+}
+#books-form {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  margin: 0 auto;
+  justify-content: center;
+  margin-top: 50px;
+}
+.form-wrapper {
+  margin: 0 auto;
+  width: 60%;
+}
+label {
+  font-size: 25px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.book-details {
+  width: 100%;
+  font-size: 20px;
+}
+input {
+  margin-top: 10px;
+  padding: 5px;
+  cursor: pointer;
+}
+select {
+  padding: 7px;
+  cursor: pointer;
+}
+#submit-book {
+  margin: 20px 0 50px;
+  height: 50px;
+  font-size: 25px;
+}
+button {
+  cursor: pointer;
+}
+
+.table th,
+.table td {
+  padding: 10px;
+  border: 4px solid #fff;
+}
+.table {
+  border-collapse: collapse;
+  text-align: center;
+  margin: 0 auto;
+}
+th {
+  background-color: rgb(203, 240, 241);
+  font-size: 25px;
+}
+tr {
+  background-color: rgb(243, 211, 201);
+  font-size: 20px;
+}
+tr:nth-child(2n) {
+  background-color: rgb(224, 243, 204);
+}
+td:nth-child(2n) {
+  background-color: rgba(0, 0, 0, 0.123);
 }

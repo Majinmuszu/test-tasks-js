@@ -19,26 +19,25 @@ const load = (key) => {
 };
 
 const booksForm = document.forms.namedItem("books-form");
-const booksList = qs(".books-list");
+const booksTable = qs(".table-body");
+const priorityValue = qs(".priority-value");
+const priorityInput = qs("#priority");
 
 const BOOKS_KEY = "BOOKS_LIST";
 
 let books = load(BOOKS_KEY) === undefined ? [] : load(BOOKS_KEY);
-let currentBookId = books.length > 0 ? books.length : null;
-
+let currentBookId = books.length > 0 ? books[books.length - 1].id : null;
 const renderBooks = () => {
-  booksList.innerHTML = "";
+  booksTable.innerHTML = "";
   books.forEach(({ id, title, author, priority, category }) => {
-    booksList.innerHTML += `
-    <li class="list-item ${id}">
-        <ul>
-            <li>Tytuł: ${title}</li>
-            <li>Autor: ${author}</li>
-            <li>Priorytet czytania: ${priority}</li>
-            <li>Kategoria: ${category}</li>
-            <button id="${id}" class="delete-button">USUŃ WPIS</button>
-        </ul>
-    </li>
+    booksTable.innerHTML += `
+    <tr class="table-row ${id}">
+            <td class="table-draw">${title}</td>
+            <td class="table-draw">${author}</td>
+            <td class="table-draw">${priority}</td>
+            <td class="table-draw">${category}</td>
+            <td class="table-draw"><button id="${id}" class="delete-button">USUŃ WPIS</button></td>
+    </tr>
     `;
   });
 };
@@ -53,28 +52,31 @@ const pushBooksToArray = () => {
     category: `${booksForm.elements[3].value}`,
   });
   save(BOOKS_KEY, books);
-  
 };
 
 booksForm.onsubmit = (e) => {
   e.preventDefault();
   pushBooksToArray();
-  log(books);
   renderBooks();
   booksForm.reset();
+  priorityValue.innerHTML = "1";
 };
+renderBooks();
 
 const removeBookFromList = (e) => {
   e.preventDefault();
   if (e.target.nodeName !== "BUTTON") {
     return;
   } else {
+    let newBooks = books.filter((book) => book.id != e.target.id);
     e.target.parentNode.parentNode.remove();
-    let newBooks = books.filter((book) => book.id !== e.target.id);
+    save(BOOKS_KEY, newBooks);
     books = newBooks;
-    save(BOOKS_KEY, books);
-    log(books);
   }
 };
-booksList.addEventListener("click", removeBookFromList);
-renderBooks();
+const updatePriorityValue = (e) => {
+  log("dupa");
+  priorityValue.innerHTML = `${priorityInput.value}`;
+};
+booksTable.addEventListener("click", removeBookFromList);
+priorityInput.addEventListener("input", updatePriorityValue);
